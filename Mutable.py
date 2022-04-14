@@ -133,4 +133,20 @@ class UnrolledLinkedList:
 
         cur.numElements += 1
         self.total_size += 1
-  
+ 
+    def from_list(self, lst):
+        if len(lst) == 0:
+            self.head.next = None
+            return
+        cur = self.head.next
+        for e in reversed(lst):
+            self.set(0, e)
+
+    def to_list(self):
+        res = []
+        cur = self.head.next
+        while cur is not None:
+            for i in range(0, cur.numElements):
+                res.append(cur.elements[i])
+            cur = cur.next
+        return res
