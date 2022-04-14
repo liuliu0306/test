@@ -96,6 +96,26 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
         self.assertEqual(lst.to_list(), ['a'])
         lst.set(1, 'b')
         self.assertEqual(lst.to_list(), ['a', 'b'])
+    def test_from_list(self):
+        # 每次测试都得初始化一遍，要不然上一次的结果还在
+        lst = UnrolledLinkedList()
+        lst.from_list([])
+        self.assertEqual(lst.to_list(), [])
+        lst = UnrolledLinkedList()
+        lst.from_list(['a'])
+        self.assertEqual(lst.to_list(), ['a'])
+        lst = UnrolledLinkedList()
+        lst.from_list(['a', 'b'])
+        self.assertEqual(lst.to_list(), ['a', 'b'])
+
+
+    def test_to_list(self):
+        lst = UnrolledLinkedList()
+        self.assertEqual(UnrolledLinkedList().to_list(), [])
+        lst.set(0, 'a')
+        self.assertEqual(lst.to_list(), ['a'])
+        lst.set(1, 'b')
+        self.assertEqual(lst.to_list(), ['a', 'b'])
 
 if __name__ == '__main__':
     unittest.main()
