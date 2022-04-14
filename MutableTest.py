@@ -62,7 +62,32 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
             lst = UnrolledLinkedList()
             lst.from_list(e)
             self.assertEqual(lst.reduce(lambda st, _: st + 1, 0), lst.size())
+            
+    def test_get(self):
+        lst = UnrolledLinkedList()
+        lst.set(0, 'a')
+        lst.set(1, 'b')
+        self.assertEqual(lst.get(0), 'a')
+        self.assertEqual(lst.get(1), 'b')
 
+    def test_remove(self):
+        lst = UnrolledLinkedList()
+        lst.set(0, 'a')
+        lst.set(1, 'b')
+        lst.set(2, 'c')
+        lst.remove(2)
+        self.assertEqual(lst.to_list(), ['a', 'b'])
+        lst.remove(1)
+        self.assertEqual(lst.to_list(), ['a'])
+        lst.remove(0)
+        self.assertEqual(lst.to_list(), [])
+
+    def test_is_member(self):
+        x = ['a', 'b', 'c']
+        lst = UnrolledLinkedList()
+        lst.from_list(x)
+        index = lst.is_member('b')
+        self.assertEqual(index, 1)
         
 if __name__ == '__main__':
     unittest.main()
