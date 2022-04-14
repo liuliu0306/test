@@ -17,7 +17,6 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
 
 
     def test_from_list(self):
-        # 每次测试都得初始化一遍，要不然上一次的结果还在
         lst = UnrolledLinkedList()
         lst.from_list([])
         self.assertEqual(lst.to_list(), [])
@@ -97,28 +96,6 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
         lst.from_list([1, 2, 3])
         lst.map(lambda x: x + 1)
         self.assertEqual(lst.to_list(), [2, 3, 4])
-
-
-    def test_reduce(self):
-        # sum of empty list
-        lst = UnrolledLinkedList()
-        self.assertEqual(lst.reduce(lambda st, e: st + e, 0), 0)
-
-        # sum of list
-        lst = UnrolledLinkedList()
-        lst.from_list([1, 2, 3])
-        self.assertEqual(lst.reduce(lambda st, e: st + e, 0), 6)
-        # size
-        test_data = [
-            [],
-            ['a'],
-            ['a', 'b']
-        ]
-        for e in test_data:
-            lst = UnrolledLinkedList()
-            lst.from_list(e)
-            self.assertEqual(lst.reduce(lambda st, _: st + 1, 0), lst.size())
-
 
     def test_iter(self):
         x = [1, 2, 3]
