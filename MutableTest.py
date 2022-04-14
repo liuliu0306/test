@@ -89,5 +89,13 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
         index = lst.is_member('b')
         self.assertEqual(index, 1)
         
+
+    def test_set(self):
+        lst = UnrolledLinkedList()
+        lst.set(0, 'a')
+        self.assertEqual(lst.to_list(), ['a'])
+        lst.set(1, 'b')
+        self.assertEqual(lst.to_list(), ['a', 'b'])
+
 if __name__ == '__main__':
     unittest.main()
