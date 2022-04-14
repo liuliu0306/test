@@ -23,18 +23,3 @@ class UnrolledLinkedList:
             cur.elements[i] = f(cur.elements[i])
         return self.to_list()
 
-    def map(self, f):
-        cur = self.head.next
-        while cur is not None:
-            for i in range(0, cur.numElements):
-                cur.elements[i] = f(cur.elements[i])
-            cur = cur.next
-
-    def reduce(self, f, initial_state):
-        state = initial_state
-        cur = self.head.next
-        while cur is not None:
-            for i in range(0, cur.numElements):
-                state = f(state, cur.elements[i])
-            cur = cur.next
-        return state
