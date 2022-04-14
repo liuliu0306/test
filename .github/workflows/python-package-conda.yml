@@ -1,0 +1,42 @@
+name: Python sanity check and tests
+
+on: [push]
+
+jobs:
+
+  python:
+    name: Run tests and lint python
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # prepare environment
+      # prepare environment
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v3
+
+      - run: python -m pip install --upgrade pip
+            pip install hypothesis
+
+      # run tests
+      - run: pip install pytest coverage
+      - run: coverage run -m pytest --verbose
+      - run: coverage report *.py
+
+      # code style checks
+      - run: pip install pycodestyle
+      - run: pycodestyle ull_test.py
+
+      # type annotation checks
+      - run: pip install mypy
+      - run: mypy ull_test.py
+
+      # if you pretend to make a typed version of your program, you should uncomment this line:  
+      # - run: mypy ull_test.py --strict
+
+  markdown:
+    name: Lint markdown
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Lint markdown files
+      uses: actionshub/markdownlint@main
