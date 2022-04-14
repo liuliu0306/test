@@ -24,14 +24,14 @@ jobs:
 
       # code style checks
       - run: pip install pycodestyle
-      - run: pycodestyle ull_test.py
+      - run: pycodestyle MutableTest.py
 
       # type annotation checks
       - run: pip install mypy
-      - run: mypy ull_test.py
+      - run: mypy MutableTest.py
 
       # if you pretend to make a typed version of your program, you should uncomment this line:  
-      # - run: mypy ull_test.py --strict
+      # - run: mypy MutableTest.py --strict
 
   markdown:
     name: Lint markdown
