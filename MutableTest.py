@@ -1,5 +1,5 @@
 import unittest
-from hypothesis import given
+from hypothesis import given, settings
 from Mutable import UnrolledLinkedList,Node
 import hypothesis.strategies as st
 
