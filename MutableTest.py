@@ -15,6 +15,22 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
         lst.set(1, 'b')
         self.assertEqual(lst.size(), 2)
         
+    def test_iter(self):
+        x = [1, 2, 3]
+        lst = UnrolledLinkedList()
+        lst.from_list(x)
+        tmp = []
+        for e in lst.head.next.elements:
+            if e != None:
+                tmp.append(e)
+        self.assertEqual(x, tmp)
+        self.assertEqual(lst.to_list(), tmp)
+
+        i = iter(UnrolledLinkedList())
+        self.assertRaises(StopIteration, lambda: next(i))
+
+        
+        
     def test_filter(self):
         def f(x):
             res = x + 2
