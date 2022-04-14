@@ -146,3 +146,7 @@ class TestMutableUnrolled_linked_list(unittest.TestCase):
         lst = UnrolledLinkedList()
         lst.from_list(a)
         self.assertEqual(lst.size(), len(a))
+
+        
+if __name__ == '__main__':
+    unittest.main()
